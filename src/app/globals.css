@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,6 +16,12 @@
   box-sizing: border-box;
 }
 
+/* Keep normal cursor visible */
+html,
+body {
+  cursor: auto;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -25,10 +32,27 @@ body {
   overflow-x: hidden;
 }
 
+/* Pointer cursor for clickable elements */
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+select,
+label {
+  cursor: pointer;
+}
+
+input,
+textarea {
+  cursor: text;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
@@ -75,9 +99,9 @@ select:focus-visible {
   pointer-events: none;
 }
 
-/* Custom cursor (desktop only, applied via JS) */
+/* Custom cursor - do not hide the system cursor */
 .cursor-hide {
-  cursor: none;
+  cursor: auto !important;
 }
 
 .custom-cursor {
@@ -104,9 +128,11 @@ select:focus-visible {
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--ivory);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--nude);
   border-radius: 999px;
@@ -116,6 +142,7 @@ select:focus-visible {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
